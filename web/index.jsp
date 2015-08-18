@@ -16,8 +16,7 @@
     <body>
         <h1>Usuarios!</h1>
         <%
-            List<Usuario> usuarios
-                    = (List<Usuario>) request.getAttribute("usuarios");
+            List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
         %>
         <%if (usuarios.size() > 0) { %>
         <table>

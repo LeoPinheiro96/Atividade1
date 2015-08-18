@@ -4,6 +4,7 @@
     Author     : Leonardo
 --%>
 
+<%@page import="mack.entities.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,13 +14,13 @@
     </head>
     <body>
         <h1>Retorno da Busca</h1>
-      <% int retorno
-                    = (int) request.getAttribute("retorno");
-        
-        if(retorno == 1){%>
-        <h2> <%System.out.print("O nome foi encontrado"); %> </h2>
+      <% Usuario usuarioEncontrado = (Usuario) request.getAttribute("usuarioEncontrado");
+      
+        if(usuarioEncontrado != null){%>
+        <h2> Usuario existe!</h2> <br>
+        <%= usuarioEncontrado.toString() %>
        <%}else{ %>
-        <h2> <%System.out.print("O nome não foi encontrado"); %> </h2>
+        <h2> Não existe </h2>
         <%}%>
     </body>
 </html>

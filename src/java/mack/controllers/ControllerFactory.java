@@ -30,6 +30,7 @@ public class ControllerFactory {
             String name = "mack.controllers.impl." + className + "Controller";
             Class actionClass = Class.forName(name);            
             return getControllerByClass(actionClass);
+            
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

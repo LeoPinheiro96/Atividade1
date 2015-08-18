@@ -33,20 +33,18 @@ public class FrontControllerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        
         try {
             String controller = request.getParameter("control");
             Controller control = ControllerFactory.getControllerByFullClassName(controller);
             control.init(request);
             control.execute();
-            RequestDispatcher requestDispatcher
-                    = getServletContext().getRequestDispatcher(control.getReturnPage());
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(control.getReturnPage());
+            
             requestDispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            out.close();
-        }
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
