@@ -1,0 +1,7 @@
+17-08-15 -> Leo
+ - Criação do projeto
+ - Inclusão do frontController, entity e classes relacionadas
+
+18-08-15 -> Sala de Aula
+ - Correção de bugs
+ - Inclusão do DAO e ExceptionDAO
