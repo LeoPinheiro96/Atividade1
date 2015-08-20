@@ -5,10 +5,7 @@
  */
 package mack.controllers.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mack.controllers.AbstractController;
@@ -29,7 +26,6 @@ public class PesquisaController extends AbstractController {
             String nome = this.getRequest().getParameter("nome");
             String sobrenome = this.getRequest().getParameter("sobrenome");
                     
-            
             UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO();
             Collection<Usuario> usuariosEncontrados = (Collection<Usuario>) conexaoUsuario.buscaUsuarioPorNome(nome);
 

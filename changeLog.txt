@@ -1,7 +1,11 @@
 17-08-15 -> Leo
- - CriaÁ„o do projeto
- - Inclus„o do frontController, entity e classes relacionadas
+ - CriaÔøΩÔøΩo do projeto
+ - InclusÔøΩo do frontController, entity e classes relacionadas
 
 18-08-15 -> Sala de Aula
- - CorreÁ„o de bugs
- - Inclus„o do DAO e ExceptionDAO
+ - CorreÔøΩÔøΩo de bugs
+ - InclusÔøΩo do DAO e ExceptionDAO
+
+
+20-08-15 -> Milton
+ - Substitui√ß√£o dos usu√°rios chumbados para usu√°rios que vem da DAO
