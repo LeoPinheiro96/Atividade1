@@ -6,11 +6,14 @@
 package mack.controllers.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mack.controllers.AbstractController;
+import mack.dao.usuario.UsuarioDAO;
+import mack.dao.usuario.UsuarioDAOFactory;
 import mack.entities.Usuario;
 import mack.entities.UsuarioImpl;
 
@@ -22,18 +25,20 @@ public class PesquisaController extends AbstractController {
 
     public void execute() {
         try {
-
-            List<Usuario> usuarios = new ArrayList();
-            usuarios.add(new UsuarioImpl("Mack", "Junior"));
-            usuarios.add(new UsuarioImpl("Mack", "Neto"));
-
+                
             String nome = this.getRequest().getParameter("nome");
+            String sobrenome = this.getRequest().getParameter("sobrenome");
+                    
+            
+            UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO();
+            Collection<Usuario> usuariosEncontrados = (Collection<Usuario>) conexaoUsuario.buscaUsuarioPorNome(nome);
+
             this.setReturnPage("/retorno.jsp");
             
             Usuario usuarioEncontrado = null;
 
-            for (Usuario user : usuarios) {
-                if ((user.getNome() + " " + user.getSobrenome()).equals(nome)) {
+            for (Usuario user : usuariosEncontrados) {
+                if (user.getSobrenome().equals(sobrenome)) {
                     usuarioEncontrado = user;
                     break;
                 }

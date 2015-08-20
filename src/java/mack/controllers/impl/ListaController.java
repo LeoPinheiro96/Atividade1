@@ -1,11 +1,14 @@
 
 package mack.controllers.impl;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mack.controllers.AbstractController;
+import mack.dao.usuario.UsuarioDAO;
+import mack.dao.usuario.UsuarioDAOFactory;
+import mack.entities.Usuario;
 import mack.entities.UsuarioImpl;
 
 /**
@@ -18,9 +21,19 @@ public class ListaController extends AbstractController {
 
     public void execute() {
         try {
-            List usuarios = new ArrayList();
-            usuarios.add(new UsuarioImpl("Mack", "Junior"));
-            usuarios.add(new UsuarioImpl("Mack", "Neto"));
+            UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO();
+            Collection usuarios = conexaoUsuario.buscaTodosUsuarios();
+            
+            //Caso a lista esteja vazia ele inclui dois usuarios;
+            if (usuarios.isEmpty())
+            {
+                conexaoUsuario.criaUsuario("Teste", "Um");
+                conexaoUsuario.criaUsuario("Teste", "Dois");
+                
+                usuarios = conexaoUsuario.buscaTodosUsuarios();
+            }
+            
+               
             this.setReturnPage("/index.jsp");
             this.getRequest().setAttribute("usuarios", usuarios);
         } catch (Exception ex) {
