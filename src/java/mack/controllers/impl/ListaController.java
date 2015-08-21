@@ -24,16 +24,7 @@ public class ListaController extends AbstractController {
             UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO();
             Collection usuarios = conexaoUsuario.buscaTodosUsuarios();
             
-            //Caso a lista esteja vazia ele inclui dois usuarios;
-            if (usuarios.isEmpty())
-            {
-                conexaoUsuario.criaUsuario("Teste", "Um");
-                conexaoUsuario.criaUsuario("Teste", "Dois");
-                
-                usuarios = conexaoUsuario.buscaTodosUsuarios();
-            }
-            
-               
+                           
             this.setReturnPage("/index.jsp");
             this.getRequest().setAttribute("usuarios", usuarios);
         } catch (Exception ex) {
