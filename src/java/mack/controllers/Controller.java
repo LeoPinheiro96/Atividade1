@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author 31437052
  */
+
+//Interface de controller
 public interface Controller {
 
     public void execute();
