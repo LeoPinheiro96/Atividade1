@@ -5,22 +5,39 @@
  */
 package mack.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 /**
  *
  * @author Leonardo
  */
-public class UsuarioImpl implements Usuario {
 
+@Entity
+@Table(name="USUARIO")
+public class UsuarioImpl implements Usuario, Serializable {
+
+    @Id    
     private int id;
     private String nome;
     private String sobrenome;
+    
+    public UsuarioImpl()
+    {
+        
+    }
 
     public UsuarioImpl(String nome, String sobrenome) {
+        this();
         this.nome = nome;
         this.sobrenome = sobrenome;
     }
 
     public UsuarioImpl(int id, String nome, String sobrenome) {
+        this();
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
