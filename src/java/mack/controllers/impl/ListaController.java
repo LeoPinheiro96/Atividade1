@@ -21,7 +21,7 @@ public class ListaController extends AbstractController {
 
     public void execute() {
         try {
-            UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO();
+            UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO("UsuarioDAOImpl");
             Collection usuarios = conexaoUsuario.buscaTodosUsuarios();
             
                            

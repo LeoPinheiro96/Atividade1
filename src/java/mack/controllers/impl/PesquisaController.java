@@ -26,7 +26,7 @@ public class PesquisaController extends AbstractController {
             String nome = this.getRequest().getParameter("nome");
             String sobrenome = this.getRequest().getParameter("sobrenome");
                     
-            UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO();
+            UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO("UsuarioDAOImpl");
             Collection<Usuario> usuariosEncontrados = (Collection<Usuario>) conexaoUsuario.buscaUsuarioPorNome(nome);
 
             this.setReturnPage("/retorno.jsp");

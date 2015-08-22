@@ -20,7 +20,7 @@ public class SetupBancoDadosController extends HttpServlet {
             log.info("Setup de tabelas");
             UsuarioUtil.setupUsuarioTable();
             log.info("Setup de tabelas executado");
-            dao = UsuarioDAOFactory.getUsuarioDAO();
+            dao = UsuarioDAOFactory.getUsuarioDAO("UsuarioDAOImpl");
             log.info("Creating usuarios");
             dao.criaUsuario("Mack", "Filho");
             dao.criaUsuario("Mack", "Net");
