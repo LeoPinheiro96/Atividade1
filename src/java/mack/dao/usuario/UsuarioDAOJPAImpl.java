@@ -37,7 +37,8 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     @Override
     public Collection buscaUsuarioPorNome(String nome) {
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT e FROM UsuarioImpl e WHERE e.nome = " + nome);
+        Query query =  em.createQuery("SELECT e FROM UsuarioImpl as e WHERE e.nome = :paramNome");
+        query.setParameter("paramNome", nome);
         
         
         return query.getResultList();
