@@ -6,7 +6,11 @@
 package mack.dao.usuario;
 
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import mack.entities.Usuario;
 import mack.entities.UsuarioImpl;
 
@@ -14,40 +18,50 @@ import mack.entities.UsuarioImpl;
  *
  * @author 31432778
  */
-public class UsuarioDAOJPAImpl implements UsuarioDAO{
+public class UsuarioDAOJPAImpl implements UsuarioDAO {
 
-    private EntityManager em;
-    
-    public UsuarioDAOJPAImpl()
-    {
-        em = null;
-       
+    private EntityManagerFactory emf;
+
+    public UsuarioDAOJPAImpl() {
+        emf = Persistence.createEntityManagerFactory("Atividade01PU");
+
     }
-    
+
     @Override
     public Usuario buscaUsuarioPorId(int id) throws UsuarioNaoEncontradoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        Usuario x = em.getReference(Usuario.class, id);
+        return x;
     }
 
     @Override
     public Collection buscaUsuarioPorNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        Collection<Usuario> x = em.getReference(Collection.class, nome);
+        return x;
     }
 
     @Override
     public Collection buscaTodosUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("SELECT e FROM Aluno e"); // mudar o nome do banco
+        Collection<Usuario> usuarios = query.getResultList();
+        return usuarios;
     }
 
     @Override
     public void removeUsuario(int id) throws UsuarioNaoEncontradoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        Usuario a = em.find(Usuario.class, id);
+        em.remove(a);
     }
 
     @Override
     public Usuario criaUsuario(String nome, String sobrenome) {
+        EntityManager em = emf.createEntityManager();
         Usuario newUsuario = new UsuarioImpl(nome, sobrenome);
-        
+        em.persist(newUsuario);
+        return newUsuario;
     }
 
     @Override
@@ -64,5 +78,5 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO{
     public boolean isClosed() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
