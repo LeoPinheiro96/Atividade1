@@ -5,6 +5,7 @@
  */
 package mack.dao.usuario;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,8 +24,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     private EntityManagerFactory emf;
 
     public UsuarioDAOJPAImpl() {
-        emf = Persistence.createEntityManagerFactory("Atividade01PU");
-
+        emf = Persistence.createEntityManagerFactory("PersistenciaConfig");
     }
 
     @Override
@@ -37,15 +37,19 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     @Override
     public Collection buscaUsuarioPorNome(String nome) {
         EntityManager em = emf.createEntityManager();
-        Collection<Usuario> x = em.getReference(Collection.class, nome);
-        return x;
+        Query query = em.createQuery("SELECT e FROM UsuarioImpl e WHERE e.nome = " + nome);
+        
+        
+        return query.getResultList();
+        
     }
-
+    
     @Override
     public Collection buscaTodosUsuarios() {
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT e FROM Aluno e"); // mudar o nome do banco
-        Collection<Usuario> usuarios = query.getResultList();
+        Query query = em.createQuery("SELECT e FROM UsuarioImpl e"); // mudar o nome do banco
+
+        Collection usuarios = query.getResultList();
         return usuarios;
     }
 
@@ -66,17 +70,28 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
 
     @Override
     public void updateUsuario(int id, String nome, String sobrenome) throws UsuarioNaoEncontradoException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        UsuarioImpl x = em.find(UsuarioImpl.class, id);
+
+        if (x != null) {
+            x.setNome(nome);
+            x.setSobrenome(sobrenome);
+            em.getTransaction().begin();
+            em.merge(x);
+            em.getTransaction().commit();
+        } else {
+            throw new UsuarioNaoEncontradoException("Usuário não encontrado");
+        }
     }
 
     @Override
     public void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (emf.isOpen())
+            emf.close();
     }
 
     @Override
     public boolean isClosed() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !emf.isOpen();
     }
-
 }

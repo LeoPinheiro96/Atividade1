@@ -6,6 +6,7 @@
 package mack.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,9 +21,14 @@ import javax.persistence.Table;
 @Table(name="USUARIO")
 public class UsuarioImpl implements Usuario, Serializable {
 
-    @Id    
+    @Id
+    @Column(name="USUARIO_ID")
     private int id;
+    
+    @Column(name="NOME")
     private String nome;
+    
+    @Column(name="SOBRENOME")
     private String sobrenome;
     
     public UsuarioImpl()
