@@ -65,7 +65,9 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     public Usuario criaUsuario(String nome, String sobrenome) {
         EntityManager em = emf.createEntityManager();
         Usuario newUsuario = new UsuarioImpl(nome, sobrenome);
+        
         em.persist(newUsuario);
+        em.
         return newUsuario;
     }
 
