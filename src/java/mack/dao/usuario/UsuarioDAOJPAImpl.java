@@ -67,7 +67,6 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         Usuario newUsuario = new UsuarioImpl(nome, sobrenome);
         
         em.persist(newUsuario);
-        em.
         return newUsuario;
     }
 
