@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * A necessidade de de criar um ID para o usuario é que é para ele ser unico 
+    na base de dados, para não haver duplicidade de dados. 
+ */
+
+/*
+ Um id tem que ser um atributo na classe java que não pode estar no construtor
+e deve ser gerado altomaticamente dele banco de dados
  */
 package mack.entities;
 
