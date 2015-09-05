@@ -1,4 +1,6 @@
-
+/*As modificações necessarias foram:
+precisava mudar o nome no index.html, senão não iria achar a classe, e tambem dentro do index que virou lista,
+tem uma linha no tratamento de excessão que pega o nome da classe lsita controller para dar o logger da mesma*/
 package mack.controllers.impl;
 
 import java.util.Collection;
@@ -32,3 +34,14 @@ public class ListaController extends AbstractController {
         }
     }
 }
+
+/**
+ No caso do DAO, para chegar os dados na pagina JSP acontece a seguinte troca de mensagens:
+ * A pagina index.HTML chama o frontcontroller com um valor na variavel control, que no
+ * caso é lista. o FrontControler pega o parametro de control e pega esse paramentro e 
+ * manda para o controller factory que usando o metodo getControllerByFullClassName
+ * indendifica a classe que vai ser usada, que no caso é ListaController. Já no lista
+ * controller, o metodo execute se encarrega de fazer a parte de lista todos os usuarios
+ * da base de dados e retorna a pagina index.jsp com um atributo junto, que nesse atributo possui
+ * o array dos usuarios. A pagina jsp faz a leitura e exibição dos dados.
+ */

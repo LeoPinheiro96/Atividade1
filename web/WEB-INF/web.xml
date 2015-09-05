@@ -3,6 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- Uma classe que é SERVLET é mapeada pela TAG <servlet>
+    e possui duas propriedades <servlet-name> e <servlet-class>.
+    <servlet-name> é o nome o servlet e
+    <servlet-class> é o nome da classe com seu caminho.    -->
     <display-name>AppFrontController</display-name>
     <welcome-file-list>
         <welcome-file>login.html</welcome-file>
@@ -54,3 +58,4 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
         </session-timeout>
     </session-config>
 </web-app>
+
