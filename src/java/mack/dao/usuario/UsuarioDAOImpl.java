@@ -1,3 +1,13 @@
+/*
+3-)Foi preciso implementar as classes de persistência que já existiam e
+estavam retornando dados que estavam em hard code.
+
+4-)Precisamos guardar apenas o projeto. Ao instalar o sistema em uma nova maquina,
+precisamos instalar e configurar o servidor e o banco de dados.
+Como a aplicação possui um setup de banco de dados, não precisamos 
+carregar a base em toda instalação pois o mesmo cria as tabelas e insere os dados
+necessários para a aplicação automáticamente.
+*/
 package mack.dao.usuario;
 
 import mack.entities.Usuario;

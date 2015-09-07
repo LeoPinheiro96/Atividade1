@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Uma das principais mudanças que foram feitas para o uso do JPA foram nas 
+classes que herdam da classe AbstractController, colocar UsuarioDAOJPAImpl como
+parametro do metodo getUsuarioDAO. Não foi necessario mexer nas paginas JSP e 
+html, pois a entrada e saida é a mesma.
  */
 package mack.dao.usuario;
 
