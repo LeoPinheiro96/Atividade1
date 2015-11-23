@@ -116,6 +116,7 @@ public final class UsuarioUtil {
             conn = DriverManager.getConnection(UsuarioConstantes.URL,
                     UsuarioConstantes.USER,
                     UsuarioConstantes.PASSWORD);
+    
         } catch (ClassNotFoundException ex) {
             throw new DAORuntimeException(ex);
         } catch (InstantiationException e) {

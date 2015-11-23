@@ -17,7 +17,9 @@ public interface UsuarioDAO {
 
     public void updateUsuario(int id, String nome, String sobrenome) throws
             UsuarioNaoEncontradoException;
-
+    
+    public Usuario buscarUsuario(String login, String senha);
+    
     public void close();
 
     public boolean isClosed();

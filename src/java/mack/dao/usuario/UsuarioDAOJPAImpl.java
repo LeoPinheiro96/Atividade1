@@ -34,6 +34,12 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         Usuario x = em.getReference(Usuario.class, id);
         return x;
     }
+    
+    @Override
+    public Usuario buscarUsuario(String login, String senha)
+    {
+        return null;
+    }
 
     @Override
     public Collection buscaUsuarioPorNome(String nome) {
@@ -43,7 +49,6 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         
         
         return query.getResultList();
-        
     }
     
     @Override

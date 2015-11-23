@@ -5,10 +5,10 @@
     <class>mack.entities.UsuarioImpl</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/LPIII"/>
-      <property name="javax.persistence.jdbc.user" value="LPIII"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/LP3ATV1"/>
+      <property name="javax.persistence.jdbc.user" value="lp3"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="LPIII"/>
+      <property name="javax.persistence.jdbc.password" value="lp3"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
     </properties>
   </persistence-unit>

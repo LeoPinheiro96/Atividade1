@@ -25,8 +25,7 @@ public class ListaController extends AbstractController {
         try {
             UsuarioDAO conexaoUsuario = UsuarioDAOFactory.getUsuarioDAO("UsuarioDAOJPAImpl");
             Collection usuarios = conexaoUsuario.buscaTodosUsuarios();
-            
-                           
+                                 
             this.setReturnPage("/index.jsp");
             this.getRequest().setAttribute("usuarios", usuarios);
         } catch (Exception ex) {

@@ -1,8 +1,7 @@
 package mack.controllers.impl;
 
 import javax.servlet.http.*;
-import java.io.*;
-import java.util.*;
+import java.io.*;import java.util.*;
 import mack.controllers.AbstractController;
 import mack.dao.exception.DAORuntimeException;
 import mack.dao.usuario.UsuarioDAO;

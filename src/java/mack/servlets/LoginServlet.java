@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import mack.dao.usuario.UsuarioDAO;
+import mack.dao.usuario.UsuarioDAOFactory;
 
 public class LoginServlet extends HttpServlet {
 
@@ -18,8 +20,9 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        // get request parameters for userID and password
-        String usuarioRequest = request.getParameter("usuario");
+        
+// get request parameters for userID and password
+        String usuarioRequest = request.getParameter("login");
         String senhaRequest = request.getParameter("senha");
 
         if (userID.equals(usuarioRequest) && password.equals(senhaRequest)) {
@@ -30,7 +33,7 @@ public class LoginServlet extends HttpServlet {
             Cookie userName = new Cookie("usuario", usuarioRequest);
             userName.setMaxAge(30 * 60);
             response.addCookie(userName);
-            response.sendRedirect("sucessoLogin.jsp");
+            response.sendRedirect("home.jsp");
         } else {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
             PrintWriter out = response.getWriter();

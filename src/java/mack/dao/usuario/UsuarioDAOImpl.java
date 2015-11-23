@@ -213,5 +213,9 @@ class UsuarioDAOImpl implements UsuarioDAO {
         }
         return result;
     }
-
+    
+    public Usuario buscarUsuario(String login, String senha)
+    {
+        return null;
+    }
 }
